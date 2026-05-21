@@ -1,25 +1,37 @@
 diff --git a/.vscode/settings.json b/.vscode/settings.json
-index 7434345..f870f59 100644
+index 99e495a..996044a 100644
 --- a/.vscode/settings.json
 +++ b/.vscode/settings.json
-@@ -29,6 +29,6 @@
- 	"[typescript]": {
+@@ -10,5 +10,5 @@
+ 		"cli/target": true,
+-		"build/**/*.js": {
+-			"when": "$(basename).ts"
+-		}
++		// "build/**/*.js": {
++		// 	"when": "$(basename).ts"
++		// }
+ 	},
+@@ -59,2 +59,3 @@
+ 		"build/npm/*.js": true,
++		"build/**/*.js": true,
+ 		"build/*.js": true
+@@ -108,3 +109,3 @@
+ 	"gulp.autoDetect": "off",
+-	"files.insertFinalNewline": true,
++	// "files.insertFinalNewline": true,
+ 	"[plaintext]": {
+@@ -114,3 +115,3 @@
+ 		"editor.defaultFormatter": "vscode.typescript-language-features",
 -		"editor.formatOnSave": true
 +		// "editor.formatOnSave": true
  	},
- 	"[javascript]": {
+@@ -118,3 +119,3 @@
+ 		"editor.defaultFormatter": "vscode.typescript-language-features",
 -		"editor.formatOnSave": true
 +		// "editor.formatOnSave": true
  	},
-@@ -36,3 +36,3 @@
+@@ -122,3 +123,3 @@
  		"editor.defaultFormatter": "rust-lang.rust-analyzer",
 -		"editor.formatOnSave": true,
 +		// "editor.formatOnSave": true,
  	},
-@@ -42,4 +42,4 @@
- 	// --- Files ---
--	"files.trimTrailingWhitespace": true,
--	"files.insertFinalNewline": true,
-+	// "files.trimTrailingWhitespace": true,
-+	// "files.insertFinalNewline": true,
- 	"files.exclude": {

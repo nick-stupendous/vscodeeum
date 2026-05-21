@@ -22,19 +22,11 @@ else
   fi
 
   if [[ "${VSCODE_QUALITY}" == "stable" ]]; then
-    CHANNEL="${SNAPCRAFT_STORE_CHANNEL:-stable}"
-
-    sudo snap install --channel "${CHANNEL}" --classic snapcraft
-
-    if [[ ! "$( snapcraft whoami )" =~ "${SNAP_PUBLISHER}" ]]; then
-      echo "FATAL -- Not authentificated"
-
-      exit 1
-    fi
+    sudo snap install --channel stable --classic snapcraft
 
     echo "Architecture: ${ARCHITECTURE}"
 
-    SNAP_VERSION=$( snapcraft revisions "${SNAP_NAME}" | grep -F "${CHANNEL}*" | grep "${ARCHITECTURE}" | tr -s ' ' | cut -d ' ' -f 4 )
+    SNAP_VERSION=$( snapcraft list-revisions "${SNAP_NAME}" | grep -F "stable*" | grep "${ARCHITECTURE}" | tr -s ' ' | cut -d ' ' -f 4 )
     echo "Snap version: ${SNAP_VERSION}"
 
     if [[ -n "${SNAP_VERSION}" && "${SNAP_VERSION}" != "${RELEASE_VERSION}" ]]; then
@@ -51,8 +43,4 @@ if [[ "${GITHUB_ENV}" ]]; then
   echo "SHOULD_BUILD=${SHOULD_BUILD}" >> "${GITHUB_ENV}"
   echo "SHOULD_DEPLOY_TO_RELEASE=${SHOULD_DEPLOY_TO_RELEASE}" >> "${GITHUB_ENV}"
 	echo "SHOULD_DEPLOY_TO_STORE=${SHOULD_DEPLOY_TO_STORE}" >> "${GITHUB_ENV}"
-else
-  echo "SHOULD_BUILD=${SHOULD_BUILD}"
-  echo "SHOULD_DEPLOY_TO_RELEASE=${SHOULD_DEPLOY_TO_RELEASE}"
-	echo "SHOULD_DEPLOY_TO_STORE=${SHOULD_DEPLOY_TO_STORE}"
 fi
