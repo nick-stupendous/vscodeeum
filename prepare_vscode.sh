@@ -289,3 +289,12 @@ elif [[ "${OS_NAME}" == "windows" ]]; then
 fi
 
 cd ..
+
+# Apply legacy Windows 7 / Ubuntu 18.04 patches
+echo "Applying legacy OS support patches (Windows 7, Ubuntu 18.04, non-AVX)..."
+for patch in patches/legacy/*.patch; do
+    if [ -f "$patch" ]; then
+        echo "  Applying: $(basename $patch)"
+        patch -p1 --forward < "$patch" 2>/dev/null || echo "    (skipped - may already be applied)"
+    fi
+done
